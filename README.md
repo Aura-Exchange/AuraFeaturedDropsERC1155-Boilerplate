@@ -1,0 +1,1 @@
+# AuraFeaturedDropsERC1155-Boilerplate
