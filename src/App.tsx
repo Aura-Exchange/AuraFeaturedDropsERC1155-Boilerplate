@@ -17,14 +17,14 @@ import { renderPaperCheckoutLink } from '@paperxyz/js-client-sdk';
 const urlParams = new URL(window.location.toString()).searchParams;
 const contractAddress = urlParams.get('contractAddress') || '0x7b4B550d6cbf55441f6153c71A5D173d860d83fE';
 const tokenId = urlParams.get('tokenId') || '3';
-const openCheckout = () => renderPaperCheckoutLink({
-  checkoutLinkUrl: "https://withpaper.com/checkout/2c679063-1ac2-42a6-a390-94bfe284e46e",
-});
 
 export default function Home() {
   const contractQuery = useContract(contractAddress);
   const contractMetadata = useContractMetadata(contractQuery.contract);
   const nft = useNFT(contractQuery.contract, tokenId);
+  const openCheckout = () => renderPaperCheckoutLink({
+    checkoutLinkUrl: "https://withpaper.com/checkout/2c679063-1ac2-42a6-a390-94bfe284e46e",
+  });
 
   const claimedSupply = useTotalCirculatingSupply(
     contractQuery.contract,
