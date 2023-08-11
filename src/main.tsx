@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
+import { ThirdwebProvider, magicLink, metamaskWallet, coinbaseWallet, walletConnect, paperWallet, rainbowWallet } from "@thirdweb-dev/react";
 import { getChainBySlug } from "@thirdweb-dev/chains";
 import "./styles/globals.css";
 
@@ -13,9 +13,21 @@ const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
   <React.StrictMode>
-    <ThirdwebProvider 
+    <ThirdwebProvider
       activeChain={activeChain}
       clientId={process.env.CLIENTID}
+      supportedWallets={[
+        magicLink({
+          apiKey: "pk_live_5BD2E64C36DC78AA",
+        }),
+        metamaskWallet(),
+        coinbaseWallet(),
+        walletConnect(),
+        // paperWallet({
+        //   paperClientId: "PAPER_CLIENT_ID",
+        // }),
+        rainbowWallet()
+      ]}
     >
       <App />
     </ThirdwebProvider>
